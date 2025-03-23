@@ -97,7 +97,7 @@ partial class Form1
         // 
         // uc_OnlineStatus
         // 
-        uc_OnlineStatus.Location = new Point(125, 55);
+        uc_OnlineStatus.Location = new Point(124, 47);
         uc_OnlineStatus.Name = "uc_OnlineStatus";
         uc_OnlineStatus.OffLineTitle = "离线";
         uc_OnlineStatus.Online = false;
