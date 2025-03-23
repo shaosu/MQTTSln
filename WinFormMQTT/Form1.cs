@@ -17,7 +17,7 @@ public partial class Form1 : Form
         InitializeComponent();
         client.RecvDataEvent += Client_RecvDataEvent;
         client.OnlineChangedEvent += Client_OnlineChangedEvent;
-        Client_OnlineChangedEvent(false);
+        //Client_OnlineChangedEvent(false);
     }
 
     private void Client_OnlineChangedEvent(bool online)
@@ -136,5 +136,19 @@ public partial class Form1 : Form
             AAA = Random.Shared.Next(1, 1000)
         };
         txt_PublishPayload.Text = System.Text.Json.JsonSerializer.Serialize(p1);
+    }
+
+    private void txt_Data_DoubleClick(object sender, EventArgs e)
+    {
+        txt_Data.Clear();
+    }
+
+    private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        if (uc_OnlineStatus.Online)
+        {
+            e.Cancel = true;
+            MessageBox.Show("请先断开连接");
+        }
     }
 }

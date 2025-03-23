@@ -108,6 +108,7 @@ partial class Form1
         // 
         // btn_DisConn
         // 
+        btn_DisConn.Enabled = false;
         btn_DisConn.Location = new Point(3, 38);
         btn_DisConn.Name = "btn_DisConn";
         btn_DisConn.Size = new Size(102, 38);
@@ -160,7 +161,7 @@ partial class Form1
         uc_URL.TabIndex = 3;
         uc_URL.Title = "地址:";
         uc_URL.Unit = "";
-        uc_URL.Value = "";
+        uc_URL.Value = "broker.emqx.io";
         // 
         // uc_Passwd
         // 
@@ -182,7 +183,7 @@ partial class Form1
         uc_UserName.TabIndex = 1;
         uc_UserName.Title = "用户名:";
         uc_UserName.Unit = "";
-        uc_UserName.Value = "su";
+        uc_UserName.Value = "";
         // 
         // sp_Content
         // 
@@ -217,6 +218,7 @@ partial class Form1
         txt_Data.Size = new Size(568, 335);
         txt_Data.TabIndex = 0;
         txt_Data.Text = "";
+        txt_Data.DoubleClick += txt_Data_DoubleClick;
         // 
         // btn_BuildPayload
         // 
@@ -247,6 +249,7 @@ partial class Form1
         // 
         // btn_Send
         // 
+        btn_Send.Enabled = false;
         btn_Send.Location = new Point(11, 304);
         btn_Send.Name = "btn_Send";
         btn_Send.Size = new Size(117, 28);
@@ -273,6 +276,7 @@ partial class Form1
         // 
         // btn_Subscribe
         // 
+        btn_Subscribe.Enabled = false;
         btn_Subscribe.Location = new Point(8, 32);
         btn_Subscribe.Name = "btn_Subscribe";
         btn_Subscribe.Size = new Size(89, 29);
@@ -289,6 +293,7 @@ partial class Form1
         Controls.Add(sp_Root);
         Name = "Form1";
         Text = "MQTTV5测试";
+        FormClosing += Form1_FormClosing;
         sp_Root.Panel1.ResumeLayout(false);
         sp_Root.Panel1.PerformLayout();
         sp_Root.Panel2.ResumeLayout(false);

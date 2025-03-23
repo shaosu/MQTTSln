@@ -16,6 +16,9 @@ namespace WinFormMQTT.VM
         public bool SSL { get; set; }
         public int KeepAlivePeriod { get; set; }
 
-
+        public ConnParam()
+        {
+            KeepAlivePeriod = 60;
+        }
     }
 }

@@ -47,27 +47,48 @@ namespace WinFormMQTT
 
         public async Task<bool> Conn(ConnParam param)
         {
+            if (param.SSL == false)
+            {
+                return await Conn_NoSSL(param);
+            }
+            else
+            {
+                return await Conn_UserName(param);
+            }
+        }
+
+        public async Task<bool> Conn_UserName(ConnParam param)
+        {
             MqttClientOptionsBuilder builder = new MqttClientOptionsBuilder()
                 .WithClientId(param.ClientID)
                 .WithTcpServer(param.URL, param.Port)
                 .WithProtocolVersion(MQTTnet.Formatter.MqttProtocolVersion.V500)
-                .WithCredentials(param.UserName, param.Password)
-                .WithKeepAlivePeriod(new TimeSpan(0, 0, 60))
+                .WithKeepAlivePeriod(new TimeSpan(0, 0, param.KeepAlivePeriod))
                 .WithTimeout(new TimeSpan(0, 0, 10))
-                .WithTlsOptions(
-                o => o.WithCertificateValidationHandler(
-                    // The used public broker sometimes has invalid certificates. This sample accepts all
-                    // certificates. This should not be used in live environments.
-                    _ => true))
+                .WithTlsOptions(o => o.WithCertificateValidationHandler(_ => param.SSL))
                 .WithCleanStart();
 
+            if (string.IsNullOrWhiteSpace(param.UserName) == false)
+            {
+                builder.WithCredentials(param.UserName, param.Password);
+            }
+
+            var options = builder.Build();
+            var response = await mqttClient.ConnectAsync(options, CancellationToken.None);
+            return response.ResultCode == MqttClientConnectResultCode.Success;
+        }
+
+        public async Task<bool> Conn_NoSSL(ConnParam param)
+        {
+            MqttClientOptionsBuilder builder = new MqttClientOptionsBuilder()
+                .WithTcpServer(param.URL, param.Port)
+                .WithProtocolVersion(MQTTnet.Formatter.MqttProtocolVersion.V500)
+                .WithKeepAlivePeriod(new TimeSpan(0, 0, param.KeepAlivePeriod))
+                .WithTimeout(new TimeSpan(0, 0, 10))
+                .WithCleanStart();
             var options = builder.Build();
 
-            // This will throw an exception if the server is not available.
-            // The result from this message returns additional data which was sent
-            // from the server. Please refer to the MQTT protocol specification for details.
             var response = await mqttClient.ConnectAsync(options, CancellationToken.None);
-            Console.WriteLine("The MQTT client is connected.");
             return response.ResultCode == MqttClientConnectResultCode.Success;
         }
 
@@ -98,7 +119,7 @@ namespace WinFormMQTT
                  .WithPayload(payload)
                  .Build();
             await mqttClient.PublishAsync(applicationMessage, CancellationToken.None);
-        }   
+        }
 
 
 
