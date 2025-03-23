@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormMQTT", "WinFormMQTT\WinFormMQTT.csproj", "{F1D7425F-E18D-D068-D6C1-E4C2FFFE2769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp1", "WinFormsApp1\WinFormsApp1.csproj", "{BC150CE2-BC7F-BB20-899B-A29BED553BB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1D7425F-E18D-D068-D6C1-E4C2FFFE2769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D7425F-E18D-D068-D6C1-E4C2FFFE2769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D7425F-E18D-D068-D6C1-E4C2FFFE2769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D7425F-E18D-D068-D6C1-E4C2FFFE2769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC150CE2-BC7F-BB20-899B-A29BED553BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC150CE2-BC7F-BB20-899B-A29BED553BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC150CE2-BC7F-BB20-899B-A29BED553BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC150CE2-BC7F-BB20-899B-A29BED553BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47E3129E-24A0-4AB7-987F-258DA5C700F2}
+	EndGlobalSection
+EndGlobal
